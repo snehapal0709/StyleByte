@@ -19,18 +19,23 @@ StyleByte is a tool designed for the Myntra website, allowing users to choose a 
 
 1. Clone the repository:
     '''bash
-    git clone https://github.com/snehapal0709/StyleByte.git'''
+    git clone https://github.com/snehapal0709/StyleByte.git
+   '''
     
-2. Navigate to the project directory:
+3. Navigate to the project directory:
     '''bash
-    cd StyleByte'''
+    cd StyleByte
+   '''
     
-3. Install dependencies:
+5. Install dependencies:
     '''bash
-    flutter pub get'''
-4. Run the project:
+    flutter pub get
+   '''
+   
+7. Run the project:
     '''bash
-    flutter run'''
+    flutter run
+   '''
     
 
 ## Usage
