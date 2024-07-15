@@ -17,7 +17,8 @@ class _HomeScreenState extends State<HomeScreen> {
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      final palette = _getColorPalette(_skinTone, _hairColor, _eyeColor);
+      final palette =
+          _getColorPalette(_skinTone, _hairColor, _eyeColor, _occasion);
       _saveToFirestore(palette);
       Navigator.push(
         context,
@@ -26,165 +27,69 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
-  List<String> _getColorPalette(
-      String skinTone, String hairColor, String eyeColor) {
-    // Predefined color palettes for every combination
-    Map<String, List<String>> palettes = {
-      '#F8D9C0_Black_Black': [
-        '#FF5733',
-        '#33FF57',
-        '#3357FF',
-        '#F1C40F',
-        '#9B59B6'
-      ],
-      '#F8D9C0_Black_Dark Brown': [
-        '#E74C3C',
-        '#3498DB',
-        '#2ECC71',
-        '#F39C12',
-        '#9B59B6'
-      ],
-      '#F8D9C0_Black_Light Brown': [
-        '#1ABC9C',
-        '#8E44AD',
-        '#2980B9',
-        '#E67E22',
-        '#D35400'
-      ],
-      '#F8D9C0_Black_Blue': [
-        '#2980B9',
-        '#8E44AD',
-        '#1ABC9C',
-        '#F39C12',
-        '#C0392B'
-      ],
-      '#F8D9C0_Black_Green': [
-        '#27AE60',
-        '#2980B9',
-        '#8E44AD',
-        '#E74C3C',
-        '#F39C12'
-      ],
-      '#F8D9C0_Blonde_Black': [
-        '#E67E22',
-        '#3498DB',
-        '#8E44AD',
-        '#2ECC71',
-        '#9B59B6'
-      ],
-      '#F8D9C0_Blonde_Dark Brown': [
-        '#8E44AD',
-        '#3498DB',
-        '#E74C3C',
-        '#1ABC9C',
-        '#D35400'
-      ],
-      '#F8D9C0_Blonde_Light Brown': [
-        '#2980B9',
-        '#E67E22',
-        '#8E44AD',
-        '#F39C12',
-        '#27AE60'
-      ],
-      '#F8D9C0_Blonde_Blue': [
-        '#3498DB',
-        '#1ABC9C',
-        '#8E44AD',
-        '#F39C12',
-        '#C0392B'
-      ],
-      '#F8D9C0_Blonde_Green': [
-        '#2ECC71',
-        '#2980B9',
-        '#8E44AD',
-        '#E74C3C',
-        '#F39C12'
-      ],
-      '#F8D9C0_Brown_Black': [
-        '#E67E22',
-        '#3498DB',
-        '#8E44AD',
-        '#2ECC71',
-        '#9B59B6'
-      ],
-      '#F8D9C0_Brown_Dark Brown': [
-        '#8E44AD',
-        '#3498DB',
-        '#E74C3C',
-        '#1ABC9C',
-        '#D35400'
-      ],
-      '#F8D9C0_Brown_Light Brown': [
-        '#2980B9',
-        '#E67E22',
-        '#8E44AD',
-        '#F39C12',
-        '#27AE60'
-      ],
-      '#F8D9C0_Brown_Blue': [
-        '#3498DB',
-        '#1ABC9C',
-        '#8E44AD',
-        '#F39C12',
-        '#C0392B'
-      ],
-      '#F8D9C0_Brown_Green': [
-        '#2ECC71',
-        '#2980B9',
-        '#8E44AD',
-        '#E74C3C',
-        '#F39C12'
-      ],
-      '#F8D9C0_Grey_Black': [
-        '#E67E22',
-        '#3498DB',
-        '#8E44AD',
-        '#2ECC71',
-        '#9B59B6'
-      ],
-      '#F8D9C0_Grey_Dark Brown': [
-        '#8E44AD',
-        '#3498DB',
-        '#E74C3C',
-        '#1ABC9C',
-        '#D35400'
-      ],
-      '#F8D9C0_Grey_Light Brown': [
-        '#2980B9',
-        '#E67E22',
-        '#8E44AD',
-        '#F39C12',
-        '#27AE60'
-      ],
-      '#F8D9C0_Grey_Blue': [
-        '#3498DB',
-        '#1ABC9C',
-        '#8E44AD',
-        '#F39C12',
-        '#C0392B'
-      ],
-      '#F8D9C0_Grey_Green': [
-        '#2ECC71',
-        '#2980B9',
-        '#8E44AD',
-        '#E74C3C',
-        '#F39C12'
-      ],
-      // Add combinations for other skin tones and combinations
+  Map<String, List<Map<String, String>>> _getColorPalette(
+      String skinTone, String hairColor, String eyeColor, String occasion) {
+    // Define color palettes for different combinations
+    Map<String, Map<String, List<Map<String, String>>>> palettes = {
+      '#f8d9c0_black_dark_brown': {
+        'Neutral Colors': [
+          {'Beige': '#F5F5DC'},
+          {'Ivory': '#FFFFF0'},
+          {'Taupe': '#483C32'},
+          {'Cream': '#FFFDD0'}
+        ],
+        'Warm Colors': [
+          {'Coral': '#FF7F50'},
+          {'Terracotta': '#E2725B'},
+          {'Warm Red': '#FF4500'},
+          {'Mustard': '#FFDB58'}
+        ],
+        'Cool Colors': [
+          {'Teal': '#008080'},
+          {'Turquoise': '#40E0D0'},
+          {'Navy': '#000080'},
+          {'Olive Green': '#808000'}
+        ],
+        'Soft Pastels': [
+          {'Peach': '#FFDAB9'},
+          {'Mint Green': '#98FF98'},
+          {'Lavender': '#E6E6FA'},
+          {'Blush Pink': '#FFC0CB'}
+        ],
+        'Jewel Tones': [
+          {'Emerald Green': '#50C878'},
+          {'Ruby Red': '#9B111E'},
+          {'Sapphire Blue': '#0F52BA'},
+          {'Amethyst Purple': '#9966CC'}
+        ],
+      },
+      // Add more combinations here
     };
 
-    String key = '${skinTone}_${hairColor}_${eyeColor}'.replaceAll(' ', '_');
+    String key = '${skinTone}_${hairColor}_${eyeColor}'
+        .toLowerCase()
+        .replaceAll(' ', '_');
+
+    // Debugging statements
+    print('Generated key: $key');
+    if (palettes.containsKey(key)) {
+      print('Palette found for key $key: ${palettes[key]}');
+    } else {
+      print('No palette found for key $key, using default palette');
+    }
+
     return palettes[key] ??
-        [
-          '#FFFFFF',
-          '#000000',
-          '#808080',
-          '#C0C0C0',
-          '#D3D3D3'
-        ]; // Default palette if no match found
+        {
+          'Default': [
+            {'White': '#FFFFFF'},
+            {'Light Grey': '#CCCCCC'},
+            {'Grey': '#999999'},
+            {'Dark Grey': '#666666'}
+          ]
+        };
   }
 
-  void _saveToFirestore(List<String> palette) {
+  void _saveToFirestore(Map<String, List<Map<String, String>>> palette) {
     FirebaseFirestore.instance.collection('palettes').add({
       'skinTone': _skinTone,
       'hairColor': _hairColor,
@@ -197,7 +102,10 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Find Your Color Palette')),
+      appBar: AppBar(
+        title: Text('Find Your Color Palette'),
+        backgroundColor: Color(0xFFFF377F),
+      ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
         child: Form(
@@ -297,7 +205,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Text(value),
                   );
                 }).toList(),
-                decoration: const InputDecoration(labelText: 'Select Occasion'),
+                decoration:
+                    const InputDecoration(labelText: 'Select The Occasion'),
                 validator: (value) => value == null || value.isEmpty
                     ? 'Please select an occasion'
                     : null,
@@ -306,7 +215,10 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _submitForm,
-                child: Text('Get Palette'),
+                child: Text('Submit'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xFFFF377F),
+                ),
               ),
             ],
           ),
