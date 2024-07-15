@@ -32,7 +32,7 @@ StyleByte is a tool designed for the Myntra website, allowing users to choose a 
     flutter pub get
    '''
    
-7. Run the project:
+6. Run the project:
     '''bash
     flutter run
    '''
