@@ -1,16 +1,53 @@
-# style_byte1
+# StyleByte
 
-A new Flutter project.
+StyleByte is a tool designed for the Myntra website, allowing users to choose a palette of colors according to their skin tone and receive recommendations for complementing colors. This tool simplifies the process of selecting colors that enhance your appearance, making it easier to find the perfect outfits.
+
+## Features
+
+- *Skin Tone Analysis*: Input your skin tone to get a customized color palette.
+- *Color Recommendations*: Receive tailored color suggestions that complement your skin tone.
+- *User-Friendly Interface*: Easy-to-navigate interface for a seamless experience.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Prerequisites
 
-A few resources to get you started if this is your first Flutter project:
+- [Flutter](https://flutter.dev/docs/get-started/install) installed on your machine.
+- Compatible with Android, iOS, Linux, macOS, Windows, and Web platforms.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Installation
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Clone the repository:
+    bash
+    git clone https://github.com/snehapal0709/StyleByte.git
+    
+2. Navigate to the project directory:
+    bash
+    cd StyleByte
+    
+3. Install dependencies:
+    bash
+    flutter pub get
+4. Run the project:
+    bash
+    flutter run
+    
+
+## Usage
+
+1. Open the StyleByte application.
+2. Enter your skin tone details.
+3. Browse through the recommended color palette.
+4. Select colors to see outfit suggestions.
+
+## Contributing
+
+We welcome contributions! Please fork the repository and create a pull request with your changes.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For any questions or suggestions, please contact [snehapal0709](https://github.com/snehapal0709).
