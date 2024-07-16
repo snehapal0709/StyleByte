@@ -2,6 +2,9 @@
 
 StyleByte is a tool designed for the Myntra website, allowing users to choose a palette of colors according to their skin tone and receive recommendations for complementing colors. This tool simplifies the process of selecting colors that enhance your appearance, making it easier to find the perfect outfits.
 
+# Video Explanation link
+https://drive.google.com/drive/folders/1-jaH6YANcAE7qOF_05eunkCveO-gjpjz
+
 ## Features
 
 - *Skin Tone Analysis*: Input your skin tone to get a customized color palette.
